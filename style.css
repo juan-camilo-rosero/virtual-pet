@@ -244,16 +244,44 @@ main{
     z-index: 100;
 }
 
-.controls{
+.food-select{
     position: fixed;
     bottom: 0;
     background-color: var(--secondary-color);
     padding-top: 20vh;
-    width: 100vw;
-    height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100vw;
+    height: 20vh;
+}
+
+.controls{
+    position: fixed;
+    width: 100vw;
+    height: 20vh;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feed{
+    position: fixed;
+    z-index: 60;
+    bottom: 9rem;
+    border: none;
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    border-radius: 5rem;
+    padding: .5rem 2rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.feed:hover{
+    background-color: var(--primary-color-darker);
 }
 
 .controls h2{
@@ -281,4 +309,5 @@ main{
     max-width: 60%;
     max-height: 60%;
     cursor: pointer;
+    z-index: 20;
 }

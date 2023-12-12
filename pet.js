@@ -58,24 +58,10 @@ export const changeRoom = (rooms, next, prev, name) => {
 
 /* ******************** Food ******************** */
 
-export const feed = (foodImg, petDiv) => {
-    const $foodImg = document.querySelector(foodImg),
-      $petDiv = document.querySelector(petDiv);
-  
-    $foodImg.addEventListener('dragstart', (event) => {
-      event.dataTransfer.setData('text/plain', 'food'); // Establecer un tipo de dato a transferir
-    });
-  
-    $petDiv.addEventListener('dragover', (event) => {
-      event.preventDefault(); // Prevenir el comportamiento por defecto
-    });
-  
-    $petDiv.addEventListener('drop', (event) => {
-      event.preventDefault();
-      const data = event.dataTransfer.getData('text'); // Obtener el tipo de dato transferido
-      if (data === 'food') {
-        alert("Has alimentado a tu mascota")
-      }
-    });
+export const feed = (btn) => {
+    const $btn = document.querySelector(btn)
+
+    $btn.addEventListener("click", e => {
+        console.log("hola")
+    })
 };
-  
