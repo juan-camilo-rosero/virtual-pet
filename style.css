@@ -53,24 +53,13 @@ html{
 #select{
     width: 100vw;
     background-color: var(--secondary-color);
-    height: 80vh;
+    height: 100vh;
     position: fixed;
-    bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transition: .5s;
-}
-
-.pokeball-icon{
-    height: 5rem;
-    width: 5rem;
-    background-color: var(--secondary-color);
-    border-radius: 5rem;
-    border: var(--primary-color) solid .75rem;
-    position: fixed;
-    top: calc(20vh - 3.5rem);
 }
 
 .select-pokemon{
