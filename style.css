@@ -221,7 +221,7 @@ main{
     cursor: pointer;
 }
 
-.previous{
+.previous, .food-prev{
     transform: scaleX(-1);
 }
 
@@ -258,4 +258,27 @@ main{
 
 .controls h2{
     color: var(--primary-color);
+}
+
+.food-next, .food-prev{
+    height: 7.5vh;
+    cursor: pointer;
+}
+
+.food-div{
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    margin: 0 3rem;
+    border: .4rem solid var(--primary-color);
+    background-color: var(--secondary-color);
+}
+
+.food-img{
+    max-width: 60%;
+    max-height: 60%;
+    cursor: pointer;
 }

@@ -1,5 +1,5 @@
 import { includeHTML } from "./include_html.js"
-import { changeRoom, loadPet } from "./pet.js"
+import { changeRoom, feed, loadPet } from "./pet.js"
 import { searchPokemon } from "./pokemonAPI.js"
 import { appearDiv, dissappearDiv } from "./transitions.js"
 

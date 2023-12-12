@@ -37,22 +37,45 @@ export const changeRoom = (rooms, next, prev, name) => {
     $controls = d.querySelector(".controls")
 
     let actualRoom = $name.textContent,
-    index = rooms.indexOf(actualRoom),
-    newIndex = 0
+    index = rooms.indexOf(actualRoom)
 
     $next.addEventListener("click", e => {
         (index === (rooms.length - 1))
         ? index = 0
         : index += 1
         $name.textContent = rooms[index]
-        includeHTML($controls, "assets/fragments/" + rooms[index] + ".html")
+        includeHTML($controls, rooms[index])
     })
 
     $prev.addEventListener("click", e => {
         (index === 0)
-        ? index = (rooms.length - 1)
-        : index -= 1
-        $name.textContent = rooms[index]
-        includeHTML($controls, "assets/fragments/" + rooms[index] + ".html")
+            ? index = (rooms.length - 1)
+            : index -= 1
+            $name.textContent = rooms[index]
+            includeHTML($controls, rooms[index])
     })
 }
+
+/* ******************** Food ******************** */
+
+export const feed = (foodImg, petDiv) => {
+    const $foodImg = document.querySelector(foodImg),
+      $petDiv = document.querySelector(petDiv);
+  
+    $foodImg.addEventListener('dragstart', (event) => {
+      event.dataTransfer.setData('text/plain', 'food'); // Establecer un tipo de dato a transferir
+    });
+  
+    $petDiv.addEventListener('dragover', (event) => {
+      event.preventDefault(); // Prevenir el comportamiento por defecto
+    });
+  
+    $petDiv.addEventListener('drop', (event) => {
+      event.preventDefault();
+      const data = event.dataTransfer.getData('text'); // Obtener el tipo de dato transferido
+      if (data === 'food') {
+        alert("Has alimentado a tu mascota")
+      }
+    });
+};
+  

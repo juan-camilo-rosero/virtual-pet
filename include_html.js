@@ -1,20 +1,21 @@
-export const includeHTML = (el, url) => {
-  const xhr = new XMLHttpRequest();
+import { feed } from "./pet.js"
 
-  xhr.addEventListener("readystatechange", (e) => {
-    if (xhr.readyState !== 4) return;
+export const includeHTML = async (el, place) => {
+  try {
+    const url = "assets/fragments/" + place + ".html",
+    res = await fetch(url)
 
-    if (xhr.status >= 200 && xhr.status < 300) {
-      el.innerHTML = xhr.responseText;
+    if (res.ok) {
+      const htmlText = await res.text()
+      el.innerHTML = htmlText
+      if (place === "cocina") feed(".food-img", ".pet")
     } else {
-      let message =
-        xhr.statusText ||
-        "Error loading the file, verify that you are making the request by http or https";
-      el.innerHTML = `<div><p>Error ${xhr.status}: ${message}</p></div>`;
+      const message =
+        res.statusText ||
+        "Error loading the file, verify that you are making the request by http or https"
+      el.innerHTML = `<div><p>Error ${res.status}: ${message}</p></div>`
     }
-  });
-
-  xhr.open("GET", url);
-  xhr.setRequestHeader("Content-type", "text/html; charset=utf-8");
-  xhr.send();
-};
+  } catch (error) {
+    el.innerHTML = `<div><p>Error: ${error.message}</p></div>`
+  }
+}
