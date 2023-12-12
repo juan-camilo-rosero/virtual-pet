@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/icons/pokeball.ico">
+    <title>Mascota virtual</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <section id="select" class="none hidden">
+        <div class="pokeball-icon"></div>
+        <div class="select-pokemon">
+            <h2>Ingresa el nombre de tu pokemon:</h2>
+            <input type="text" class="pokemon-name">
+            <button class="pokemon-name-btn">Buscar</button>
+        </div>
+        <div class="confirm-pokemon none hidden">
+            <h2>¿Es éste?</h2>
+            <div class="pokemon-img-container">
+                <img class="pokemon-img" src="#" alt="Aquí debería verse la imagen de tu Pokémon">
+            </div>
+            <div class="confirm-buttons">
+                <button class="confirm-pokemon-no">No</button>
+                <button class="confirm-pokemon-yes">Sí</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="hidden none">
+        <div class="stats">
+            <figure></figure>
+            <figure></figure>
+            <figure></figure>
+        </div>
+        <div class="place">
+            <img src="assets/images/arrow.png" alt="Anterior" class="previous">
+            <h2 class="room">dormitorio</h2>
+            <img src="assets/images/arrow.png" alt="Anterior" class="next">
+        </div>
+        <div class="pet">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png" alt="Tu mascota" class="pet-img">
+        </div>
+        <div class="controls" data-include="assets/fragments/dormitorio.html"></div>
+    </main>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
