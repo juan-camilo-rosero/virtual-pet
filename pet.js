@@ -49,19 +49,70 @@ export const changeRoom = (rooms, next, prev, name) => {
 
     $prev.addEventListener("click", e => {
         (index === 0)
-            ? index = (rooms.length - 1)
-            : index -= 1
-            $name.textContent = rooms[index]
-            includeHTML($controls, rooms[index])
+        ? index = (rooms.length - 1)
+        : index -= 1
+        $name.textContent = rooms[index]
+        includeHTML($controls, rooms[index])
     })
 }
 
 /* ******************** Food ******************** */
 
-export const feed = (btn) => {
-    const $btn = document.querySelector(btn)
+export const feed = (image, btn) => {
+    const $btn = document.querySelector(btn),
+    $image = document.querySelector(image)
 
     $btn.addEventListener("click", e => {
-        console.log("hola")
+        const food = $image.getAttribute("alt")
     })
 };
+
+export const changeFood = (prev, next, image, imagesArr) => {
+    const $prev = d.querySelector(prev),
+    $next = d.querySelector(next),
+    $image = d.querySelector(image)
+
+    $next.addEventListener("click", e => {
+        const image = $image.getAttribute("alt")
+        let index = imagesArr.indexOf(image);
+        (index === (imagesArr.length - 1))
+        ? index = 0
+        : index += 1
+
+        $image.setAttribute("alt", imagesArr[index])
+        $image.setAttribute("src", `assets/images/${imagesArr[index]}.png`)
+    })
+
+    $prev.addEventListener("click", e => {
+        const image = $image.getAttribute("alt")
+        let index = imagesArr.indexOf(image);
+        (index === 0)
+        ? index = (imagesArr.length - 1)
+        : index -= 1
+
+        $image.setAttribute("alt", imagesArr[index])
+        $image.setAttribute("src", `assets/images/${imagesArr[index]}.png`)
+    })
+}
+
+export const statsConfig = stat => {
+    const $stats = d.querySelectorAll(stat)
+    
+    if(!ls.getItem("stats")) ls.setItem("stats", "10,10,10")
+
+    console.log(ls.getItem("stats").split(","));
+    
+    setInterval(() => {
+        const stats = ls.getItem("stats").split(",")
+        $stats.forEach(($stat, index) => {
+            if(stats[index]>= 0.2){
+                stats[index] -= 0.05
+                $stat.style.height = `${stats[index]}vh`
+            }
+            else {
+                $stat.style.height = "0px"
+            } // Código si la mascota se muere
+        });
+        ls.setItem("stats", stats)
+    }, 1000);
+}

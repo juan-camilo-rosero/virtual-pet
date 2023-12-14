@@ -204,8 +204,25 @@ main{
 .stats figure{
     width: 10vh;
     height: 10vh;
-    border-radius: 1rem;
+    border-radius: 1rem 1rem 0 0;
     background-color: var(--third-color);
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.stats figure img{
+    height: 5vh;
+    z-index: 20;
+    margin-bottom: 2.5vh;
+}
+
+.stats figure div{
+    position: fixed;
+    width: 10vh;
+    background-color: var(--secondary-color);
+    border-radius: 1rem 1rem 0 0;
+    transition: .3s;
 }
 
 .place{
@@ -232,7 +249,7 @@ main{
 }
 
 .pet{
-    height: 45vh;
+    height: 40vh;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -308,6 +325,4 @@ main{
 .food-img, .game-img{
     max-width: 60%;
     max-height: 60%;
-    cursor: pointer;
-    z-index: 20;
 }

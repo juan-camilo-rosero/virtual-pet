@@ -1,5 +1,5 @@
 import { includeHTML } from "./include_html.js"
-import { changeRoom, feed, loadPet } from "./pet.js"
+import { changeFood, changeRoom, feed, loadPet, statsConfig } from "./pet.js"
 import { searchPokemon } from "./pokemonAPI.js"
 import { appearDiv, dissappearDiv } from "./transitions.js"
 
@@ -21,6 +21,7 @@ d.addEventListener("DOMContentLoaded", e => {
     $pokemonConfirmYes.addEventListener("click", e => {
         loadPet()
     })
+    statsConfig(".stats figure div")
     d.querySelectorAll("[data-include]")
     .forEach((el) => includeHTML(el, el.getAttribute("data-include")));
     changeRoom(["dormitorio", "cocina", "parque"], ".next", ".previous", ".room")

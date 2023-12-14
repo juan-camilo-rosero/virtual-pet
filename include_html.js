@@ -1,4 +1,4 @@
-import { feed } from "./pet.js"
+import { changeFood, feed, statsConfig } from "./pet.js"
 
 export const includeHTML = async (el, place) => {
   try {
@@ -8,7 +8,10 @@ export const includeHTML = async (el, place) => {
     if (res.ok) {
       const htmlText = await res.text()
       el.innerHTML = htmlText
-      if (place === "cocina") feed(".food-img", ".pet")
+      if (place === "cocina") {
+        feed(".food-img", ".feed")
+        changeFood(".food-prev", ".food-next", ".food-img",["burger", "hot-dog", "apple"])
+      }
     } else {
       const message =
         res.statusText ||
