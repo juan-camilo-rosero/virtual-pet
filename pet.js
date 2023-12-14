@@ -58,19 +58,40 @@ export const changeRoom = (rooms, next, prev, name) => {
 
 /* ******************** Food ******************** */
 
-export const feed = (image, btn) => {
-    const $btn = document.querySelector(btn),
-    $image = document.querySelector(image)
+export const feed = async (image, btn, stat, amount) => {
+    const $btn = d.querySelector(btn),
+    $image = d.querySelector(image),
+    $stat = d.querySelector(stat),
+    $amount = d.querySelector(amount),
+    res = await fetch("db.json"),
+    data = await res.json()
 
     $btn.addEventListener("click", e => {
-        const food = $image.getAttribute("alt")
+        const food = $image.getAttribute("alt"),
+        foodData = data["food"][food],
+        height = ls.getItem("stats").split(",")
+        if (ls.getItem(food) === null) ls.setItem(food, 5)
+        const amount = ls.getItem(food)
+        if(amount >= 1){
+            let newHeight = parseFloat(height[0]) + foodData["feed"]
+            if(newHeight > 10) newHeight = 10
+
+            ls.setItem(food, (amount - 1))
+            ls.setItem("stats", [newHeight, height[1], height[2]])
+            $stat.style.height = `${newHeight}vh`
+            $amount.textContent = `X${amount - 1}`
+        }
+        else{
+            console.log("hola uwu");
+        }
     })
 };
 
-export const changeFood = (prev, next, image, imagesArr) => {
+export const changeFood = (prev, next, image, imagesArr, amount) => {
     const $prev = d.querySelector(prev),
     $next = d.querySelector(next),
-    $image = d.querySelector(image)
+    $image = d.querySelector(image),
+    $amount = d.querySelector(amount)
 
     $next.addEventListener("click", e => {
         const image = $image.getAttribute("alt")
@@ -80,7 +101,10 @@ export const changeFood = (prev, next, image, imagesArr) => {
         : index += 1
 
         $image.setAttribute("alt", imagesArr[index])
-        $image.setAttribute("src", `assets/images/${imagesArr[index]}.png`)
+        $image.setAttribute("src", `assets/images/${imagesArr[index]}.png`);
+        (!ls.getItem(imagesArr[index]))
+        ? $amount.textContent = "X5"
+        : $amount.textContent = "X"+ls.getItem(imagesArr[index])
     })
 
     $prev.addEventListener("click", e => {
@@ -91,7 +115,10 @@ export const changeFood = (prev, next, image, imagesArr) => {
         : index -= 1
 
         $image.setAttribute("alt", imagesArr[index])
-        $image.setAttribute("src", `assets/images/${imagesArr[index]}.png`)
+        $image.setAttribute("src", `assets/images/${imagesArr[index]}.png`);
+        (!ls.getItem(imagesArr[index]))
+        ? $amount.textContent = "X5"
+        : $amount.textContent = "X"+ls.getItem(imagesArr[index])
     })
 }
 
@@ -99,8 +126,6 @@ export const statsConfig = stat => {
     const $stats = d.querySelectorAll(stat)
     
     if(!ls.getItem("stats")) ls.setItem("stats", "10,10,10")
-
-    console.log(ls.getItem("stats").split(","));
     
     setInterval(() => {
         const stats = ls.getItem("stats").split(",")

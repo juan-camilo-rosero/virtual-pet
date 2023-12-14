@@ -1,5 +1,8 @@
 import { changeFood, feed, statsConfig } from "./pet.js"
 
+const d = document,
+ls = localStorage
+
 export const includeHTML = async (el, place) => {
   try {
     const url = "assets/fragments/" + place + ".html",
@@ -9,8 +12,11 @@ export const includeHTML = async (el, place) => {
       const htmlText = await res.text()
       el.innerHTML = htmlText
       if (place === "cocina") {
-        feed(".food-img", ".feed")
-        changeFood(".food-prev", ".food-next", ".food-img",["burger", "hot-dog", "apple"])
+        feed(".food-img", ".feed", ".stat-hunger", ".amount")
+        changeFood(".food-prev", ".food-next", ".food-img",["burger", "hot-dog", "apple"], ".amount"),
+        (ls.getItem("burger") === null)
+        ? d.querySelector(".amount").textContent = "X5"
+        : d.querySelector(".amount").textContent = "X" + ls.getItem("burger")
       }
     } else {
       const message =

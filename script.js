@@ -20,6 +20,7 @@ d.addEventListener("DOMContentLoaded", e => {
     })
     $pokemonConfirmYes.addEventListener("click", e => {
         loadPet()
+        ls.setItem("stats", [10,10,10])
     })
     statsConfig(".stats figure div")
     d.querySelectorAll("[data-include]")

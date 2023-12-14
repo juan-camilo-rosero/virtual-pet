@@ -1,0 +1,16 @@
+{
+    "food": {
+        "burger": {
+            "price": 20,
+            "feed": 2
+        },
+        "hot-dog": {
+            "price": 10,
+            "feed": 1
+        },
+        "apple": {
+            "price": 30,
+            "feed": 3
+        }
+    }
+}
