@@ -184,7 +184,7 @@ main{
     height: 100vh;
     background-color: var(--third-color);
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-direction: column;
     transition: .5s;
@@ -192,13 +192,14 @@ main{
 
 .stats{
     width: 100vw;
-    height: 20vh;
+    height: 15vh;
     background-color: var(--primary-color);
     position: fixed;
     top: 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    z-index: 20;
 }
 
 .stats figure{
@@ -231,6 +232,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 15vh;
 }
 
 .place img{
@@ -261,11 +263,11 @@ main{
     z-index: 100;
 }
 
-.food-select, .game-select{
+.food-select, .game-select, .bedroom{
     position: fixed;
     bottom: 0;
     background-color: var(--secondary-color);
-    padding-top: 20vh;
+    padding-top: 25vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -334,4 +336,20 @@ main{
     color: var(--primary-color);
     font-weight: 600;
     font-size: 1.2rem;
+}
+
+.rest-btn{
+    width: 5rem;
+    cursor: pointer;
+    z-index: 200;
+}
+
+.sleeping{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: var(--primary-color);
+    top: 0;
+    z-index: 0;
+    transition: .3s;
 }

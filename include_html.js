@@ -1,4 +1,4 @@
-import { changeFood, feed, statsConfig } from "./pet.js"
+import { changeFood, feed, rest, restBtn, statsConfig } from "./pet.js"
 
 const d = document,
 ls = localStorage
@@ -16,7 +16,16 @@ export const includeHTML = async (el, place) => {
         changeFood(".food-prev", ".food-next", ".food-img",["burger", "hot-dog", "apple"], ".amount"),
         (ls.getItem("burger") === null)
         ? d.querySelector(".amount").textContent = "X5"
-        : d.querySelector(".amount").textContent = "X" + ls.getItem("burger")
+        : d.querySelector(".amount").textContent = "X" + ls.getItem("burger");
+      }
+      else if (place == "dormitorio"){
+        restBtn(".rest-btn")
+        
+        const interval = setInterval(() => {
+          rest(".rest-btn", ".stat-energy")
+        }, 1000);
+      }
+      else if(place == "parque"){
       }
     } else {
       const message =

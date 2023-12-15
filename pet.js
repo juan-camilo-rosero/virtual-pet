@@ -69,15 +69,15 @@ export const feed = async (image, btn, stat, amount) => {
     $btn.addEventListener("click", e => {
         const food = $image.getAttribute("alt"),
         foodData = data["food"][food],
-        height = ls.getItem("stats").split(",")
+        height = ls.getItem("hunger")
         if (ls.getItem(food) === null) ls.setItem(food, 5)
         const amount = ls.getItem(food)
         if(amount >= 1){
-            let newHeight = parseFloat(height[0]) + foodData["feed"]
+            let newHeight = parseInt(height) + foodData["feed"]
             if(newHeight > 10) newHeight = 10
 
             ls.setItem(food, (amount - 1))
-            ls.setItem("stats", [newHeight, height[1], height[2]])
+            ls.setItem("hunger", newHeight)
             $stat.style.height = `${newHeight}vh`
             $amount.textContent = `X${amount - 1}`
         }
@@ -125,10 +125,13 @@ export const changeFood = (prev, next, image, imagesArr, amount) => {
 export const statsConfig = stat => {
     const $stats = d.querySelectorAll(stat)
     
-    if(!ls.getItem("stats")) ls.setItem("stats", "10,10,10")
-    
+    if(!ls.getItem("hunger")){
+        ls.setItem("hunger", 10)
+        ls.setItem("energy", 10)
+        ls.setItem("happiness", 10)
+    }    
     setInterval(() => {
-        const stats = ls.getItem("stats").split(",")
+        const stats = [ls.getItem("hunger"), ls.getItem("energy"), ls.getItem("happiness")]
         $stats.forEach(($stat, index) => {
             if(stats[index]>= 0.2){
                 stats[index] -= 0.05
@@ -138,6 +141,49 @@ export const statsConfig = stat => {
                 $stat.style.height = "0px"
             } // Código si la mascota se muere
         });
-        ls.setItem("stats", stats)
+        ls.setItem("hunger", stats[0])
+        ls.setItem("energy", stats[1])
+        ls.setItem("happiness", stats[2])
     }, 1000);
+}
+
+export const restBtn = btn => {
+    const $btn = d.querySelector(btn)
+
+    $btn.addEventListener("click", e => {
+        let state = $btn.getAttribute("data-state")
+
+        if (state == "day"){
+            $btn.setAttribute("src", "assets/images/moon.png")
+            $btn.setAttribute("alt", "Hacer de día")
+            $btn.setAttribute("data-state", "night")
+            appearDiv(".sleeping")
+        }
+        else{
+            $btn.setAttribute("src", "assets/images/sun.png")
+            $btn.setAttribute("alt", "Hacer de noche")
+            $btn.setAttribute("data-state", "day")
+            dissappearDiv(".sleeping")
+        }
+    })
+}
+
+export const rest = (btn, stat) => {
+    const $btn = d.querySelector(btn),
+    $stat = d.querySelector(stat)
+
+    if($btn && $btn.getAttribute("data-state") == "night"){
+        let height = parseFloat(ls.getItem("energy")),
+        newHeight = height + 0.5
+
+        if(newHeight <= 10) {
+            ls.setItem("energy", newHeight)
+            $stat.style.height = `${newHeight}vh`
+        }
+        else{
+            ls.setItem("energy", 10)
+            $stat.style.height = `10vh`
+        }
+    }
+
 }
