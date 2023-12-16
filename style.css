@@ -250,12 +250,30 @@ main{
     text-align: center;
 }
 
+.money{
+    height: 5vh;
+    width: 100vw;
+    position: fixed;
+    top: 29vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.money p{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+
 .pet{
     height: 40vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: .3s;
 }
 
 .pet-img{
@@ -263,7 +281,7 @@ main{
     z-index: 100;
 }
 
-.food-select, .game-select, .bedroom{
+.food-select, .game-select, .bedroom, .shop-div{
     position: fixed;
     bottom: 0;
     background-color: var(--secondary-color);
@@ -338,7 +356,7 @@ main{
     font-size: 1.2rem;
 }
 
-.rest-btn{
+.rest-btn, .shop-btn{
     width: 5rem;
     cursor: pointer;
     z-index: 200;
@@ -352,4 +370,114 @@ main{
     top: 0;
     z-index: 0;
     transition: .3s;
+}
+
+.shop{
+    width: 100vw;
+    height: 85vh;
+    position: fixed;
+    top: 15vh;
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 15;
+    overflow-y: auto;
+    transition: .3s;
+}
+
+.title{
+    width: 100vw;
+    height: 15vh;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.title h3{
+    font-size: 2rem;
+    color: var(--secondary-color);
+}
+
+.close-shop{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: var(--secondary-color) solid .3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.close-shop p{
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.shop-money{
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.shop-products{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 3rem;
+}
+
+.shop-product{
+    width: 70vw;
+    padding: 1rem 2.5vw;
+    border: var(--primary-color) solid .3rem;
+    border-radius: 1rem;
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.shop-image{
+    width: 20vw;
+    height: 20vw;
+    border: var(--primary-color) solid .3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    margin-right: 5vw;
+}
+
+.shop-image img{
+    width: 70%;
+}
+
+.shop-desc{
+    width: 45vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.shop-product-name{
+    color: var(--primary-color);
+    font-size: .9rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.buy-product{
+    border-radius: 1rem;
+    background-color: var(--primary-color);
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    border: none;
+    padding: .5rem 0;
+    cursor: pointer;
 }

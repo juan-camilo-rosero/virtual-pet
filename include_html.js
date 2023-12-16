@@ -1,4 +1,5 @@
-import { changeFood, feed, rest, restBtn, statsConfig } from "./pet.js"
+import { buyProduct } from "./money.js"
+import { changeFood, feed, rest, restBtn, shopControls, statsConfig } from "./pet.js"
 
 const d = document,
 ls = localStorage
@@ -26,6 +27,10 @@ export const includeHTML = async (el, place) => {
         }, 1000);
       }
       else if(place == "parque"){
+      }
+      else if(place == "tienda"){
+        shopControls(".shop-btn", ".close-shop", ".shop-money")
+        buyProduct(".buy-product", "db.json", ".shop-money")
       }
     } else {
       const message =

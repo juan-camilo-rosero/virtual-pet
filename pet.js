@@ -187,3 +187,20 @@ export const rest = (btn, stat) => {
     }
 
 }
+
+export const shopControls = (openBtn, closeBtn, money) => {
+    const $openBtn = d.querySelector(openBtn),
+    $closeBtn = d.querySelector(closeBtn),
+    $money = d.querySelector(money)
+
+    $openBtn.addEventListener("click", e => {
+        appearDiv(".shop")
+        dissappearDiv(".pet")
+        $money.textContent = `$${ls.getItem("money")}`
+    })
+
+    $closeBtn.addEventListener("click", e => {
+        appearDiv(".pet")
+        dissappearDiv(".shop")
+    })
+}

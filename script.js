@@ -1,4 +1,5 @@
 import { includeHTML } from "./include_html.js"
+import { setMoney } from "./money.js"
 import { changeFood, changeRoom, feed, loadPet, statsConfig } from "./pet.js"
 import { searchPokemon } from "./pokemonAPI.js"
 import { appearDiv, dissappearDiv } from "./transitions.js"
@@ -25,7 +26,8 @@ d.addEventListener("DOMContentLoaded", e => {
         ls.setItem("happiness", 10)
     })
     statsConfig(".stats figure div")
+    setMoney(".money-counter")
     d.querySelectorAll("[data-include]")
     .forEach((el) => includeHTML(el, el.getAttribute("data-include")));
-    changeRoom(["dormitorio", "cocina", "parque"], ".next", ".previous", ".room")
+    changeRoom(["dormitorio", "cocina", "parque", "tienda"], ".next", ".previous", ".room")
 })
