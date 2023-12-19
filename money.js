@@ -18,8 +18,6 @@ export const buyProduct = async (btns, db, money) => {
     res = await fetch(db),
     products = await res.json()
 
-    console.log(products["food"]);
-
     $btns.forEach($btn => {
         $btn.addEventListener("click", e => {
             const product = $btn.getAttribute("data-product"),
@@ -28,9 +26,6 @@ export const buyProduct = async (btns, db, money) => {
             if(price <= userMoney){
                 const newMoney = userMoney - price
                 let productAmount = parseInt(ls.getItem(product)) || 5
-
-                console.log(product);
-                console.log(ls.getItem(product));
 
                 ls.setItem("money", newMoney)
                 $money.textContent = `$${newMoney}`

@@ -1,5 +1,5 @@
 import { buyProduct } from "./money.js"
-import { changeFood, changeGame, feed, rest, restBtn, shopControls, statsConfig } from "./pet.js"
+import { changeFood, changeGame, feed, rest, restBtn, selectGame, shopControls, statsConfig } from "./pet.js"
 
 const d = document,
 ls = localStorage
@@ -28,6 +28,7 @@ export const includeHTML = async (el, place) => {
       }
       else if(place == "parque"){
         changeGame(".game-prev", ".game-next", ".game-img", ["fnaf", "pokemon"])
+        selectGame(".game-img", ".play")
       }
       else if(place == "tienda"){
         shopControls(".shop-btn", ".close-shop", ".shop-money")

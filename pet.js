@@ -81,9 +81,6 @@ export const feed = async (image, btn, stat, amount) => {
             $stat.style.height = `${newHeight}vh`
             $amount.textContent = `X${amount - 1}`
         }
-        else{
-            console.log("hola uwu");
-        }
     })
 };
 
@@ -230,5 +227,14 @@ export const changeGame = (prev, next, image, imagesArr) => {
 
         $image.setAttribute("alt", imagesArr[index])
         $image.setAttribute("src", `assets/images/${imagesArr[index]}.png`)
+    })
+}
+
+export const selectGame = (img, playBtn) => {
+    const $img = d.querySelector(img),
+    $playBtn = d.querySelector(playBtn)
+
+    $playBtn.addEventListener("click", e => {
+        location.href = `https://mascota-virtual.vercel.app/${$img.getAttribute("alt")}`
     })
 }
