@@ -54,9 +54,10 @@ lose = () => {
         $loseScreen.classList.remove("none")
         state = "lose"
         ls.setItem("happiness", 10)
+        let actualMoney = parseInt(ls.getItem("money"))
         ls.setItem("money", (actualMoney + 50))
         setTimeout(() =>  location.href = "https://mascota-virtual.vercel.app/" 
-        , 4000);
+        , 3000);
     }
 }
 
@@ -347,7 +348,7 @@ export function time(btn, clock) {
         let interval = setInterval(() => {
             seconds++
             
-            if(seconds % 10 == 0) {
+            if(seconds % 45 == 0) {
                 minutes++
                 $clock.textContent = `${minutes} AM`
             }
