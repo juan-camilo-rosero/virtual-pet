@@ -204,3 +204,31 @@ export const shopControls = (openBtn, closeBtn, money) => {
         dissappearDiv(".shop")
     })
 }
+
+export const changeGame = (prev, next, image, imagesArr) => {
+    const $prev = d.querySelector(prev),
+    $next = d.querySelector(next),
+    $image = d.querySelector(image)
+
+    $next.addEventListener("click", e => {
+        const image = $image.getAttribute("alt")
+        let index = imagesArr.indexOf(image);
+        (index === (imagesArr.length - 1))
+        ? index = 0
+        : index += 1
+
+        $image.setAttribute("alt", imagesArr[index])
+        $image.setAttribute("src", `assets/images/${imagesArr[index]}.png`)
+    })
+
+    $prev.addEventListener("click", e => {
+        const image = $image.getAttribute("alt")
+        let index = imagesArr.indexOf(image);
+        (index === 0)
+        ? index = (imagesArr.length - 1)
+        : index -= 1
+
+        $image.setAttribute("alt", imagesArr[index])
+        $image.setAttribute("src", `assets/images/${imagesArr[index]}.png`)
+    })
+}
