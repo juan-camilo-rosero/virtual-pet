@@ -1,0 +1,314 @@
+*{
+    margin: 0;
+    font-family: 'Source Code Pro', monospace;
+}
+
+html{
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+body{
+    background-color: black;
+}
+
+.hidden{
+    visibility: hidden;
+    opacity: 0;
+}
+
+.none{
+    display: none !important;
+}
+
+#introduction{
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: whitesmoke;
+    background-image: url("fondo_juego_fnaf_hanna.jpg");
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transition: 1s;
+}
+
+#introduction h2{
+    font-size: 2rem;
+    font-weight: 300;
+    padding-left: 5vw;
+}
+
+.introduction-text{
+    padding-left: 5vw;
+    height: 30vh;
+    width: 50vw;
+    padding-top: 17vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#introduction p{
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/*Game*/
+
+#game{
+    width: 90vw;
+    margin-left: 5vw;
+    height: 100vh;
+    background-image: url("habitacion.jpg");
+    background-size: cover;
+    background-position: left;
+    transition: .5s;
+    background-repeat: no-repeat;
+}
+
+.hour{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hour p{
+    font-size: 3rem;
+    color: whitesmoke;
+    font-weight: 800;
+}
+
+.move-right{
+    background-position: right !important;
+}
+
+.window-iluminated{
+    background-image: url("ventana.jpg") !important;
+}
+.door-iluminated{
+    background-image: url("puerta.jpg") !important;
+}
+.window-monster{
+    background-image: url("ventana_abierta.jpg") !important;
+}
+.door-monster{
+    background-image: url("puerta_abierta.jpg") !important;
+}
+
+.light{
+    width: 10rem;
+    height: 2.5rem;
+    
+    position: fixed;
+    border-radius: 5rem;
+    top: 1rem;
+    left: calc(50vw - 5rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-light, .right-light{
+    height: 100%;
+    width: 49%;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: .5s;
+}
+
+.left-light{
+    border-radius: 5rem 0 0 5rem;
+}
+
+.right-light{
+    border-radius: 0 5rem 5rem 0;
+}
+
+.on{
+    background-color: whitesmoke !important;
+}
+
+.hide-background{
+    background-position-y: -80vh !important;
+    background-repeat: no-repeat;
+}
+
+/*Controls*/
+
+.controls{
+    width: 90vw;
+    height: 20vh;
+    position: fixed;
+    bottom: 0;
+}
+
+.hide, .statistics{
+    width: 35vw;
+    height: 7vh;
+    cursor: pointer;
+    transition: .5s;
+    bottom: 5vh;
+}
+
+.hide{
+    background-color: rgba(255, 0, 0, 0.4);
+    position: fixed;
+    left: 10vw;
+}
+
+.hide:hover, .hide-on{
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+.statistics{
+    background-color: rgba(245, 245, 245, 0.4);
+    position: fixed;
+    right: 10vw;
+    
+}
+
+.statistics-screen{
+    position: fixed;
+    width: 35vw;
+    border-radius: 2rem 2rem 0 0;
+    background-color: rgba(245, 245, 245, 0.4);
+    right: 10vw;
+    transition: .5s;
+    bottom: 12vh;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statistic{
+    width: 30vw;
+    height: 25%;
+    display: flex;
+    height: 10vh;
+    margin: 5vh 0;
+    align-items: center;
+}
+
+.statistic button{
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    border: solid rgba(0, 0, 0, 0.6) .5vw;
+    margin-right: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    transition: .5s;
+    cursor: pointer;
+}
+
+.statistic button:hover{
+    background-color: green;
+}
+
+.statistic div{
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 23vw;
+    padding: 0 .3vw;
+    height: 7vh;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.statistic div div{
+    height: 80%;
+    border-radius: .8rem;
+    background-color: green;
+    transition: .5s;
+}
+
+.statistic p{
+    position: absolute;
+    width: 60%;
+    text-align: center;
+    font-weight: 600;
+    color: black;
+    font-size: .7rem;
+}
+
+.statistics-screen-on{
+    height: 60vh;
+}
+
+.statistic-button-on{
+    background-color: green !important;
+}
+
+.statistics:hover{
+    background-color:rgba(245, 245, 245, 0.7);
+}
+
+.clock{
+    position: fixed;
+    top: 5vh;
+    right: 10vw;
+    color: whitesmoke;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+/*win screen*/
+
+.win-screen,
+.lose-screen{
+    width: 90vw;
+    height: 100vh;
+    position: absolute;
+    background-color: black;
+    z-index: 100;
+    cursor: default;
+}
+
+.win-screen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lose-screen{
+    background-image: url("screamer.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.win-screen h2{
+    font-size: 4rem;
+    color: whitesmoke;
+}
+
+/*Responsive*/
+
+@media (min-width: 950px) {
+    .light{
+        display: none !important;
+    }
+
+    #introduction h2{
+        font-size: 3rem;
+    }
+
+    #introduction p{
+        font-size: 2.5rem;
+    }
+
+    .hour p{
+        font-size: 5rem;
+    }
+    .statistic p{
+        width: 66%;
+        font-size: 1.5rem;
+    }
+}
