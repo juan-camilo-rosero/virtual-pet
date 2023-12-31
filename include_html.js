@@ -1,5 +1,6 @@
 import { buyProduct } from "./money.js"
-import { changeFood, changeGame, feed, rest, restBtn, selectGame, shopControls, statsConfig } from "./pet.js"
+import { payment } from "./payment.js"
+import { changeFood, changeGame, feed, rest, restBtn, selectGame, shopControls} from "./pet.js"
 
 const d = document,
 ls = localStorage
@@ -33,6 +34,7 @@ export const includeHTML = async (el, place) => {
       else if(place == "tienda"){
         shopControls(".shop-btn", ".close-shop", ".shop-money")
         buyProduct(".buy-product", "db.json", ".shop-money")
+        payment()
       }
     } else {
       const message =
