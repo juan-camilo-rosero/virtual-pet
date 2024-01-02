@@ -1,6 +1,7 @@
 import { includeHTML } from "./include_html.js"
 import { setMoney } from "./money.js"
-import { changeFood, changeRoom, feed, loadPet, statsConfig } from "./pet.js"
+import { validatePayment } from "./payment.js"
+import { changeRoom, feed, loadPet, statsConfig } from "./pet.js"
 import { searchPokemon } from "./pokemonAPI.js"
 import { appearDiv, dissappearDiv } from "./transitions.js"
 
@@ -14,6 +15,7 @@ $pokemonConfirmYes = d.querySelector(".confirm-pokemon-yes")
 d.addEventListener("DOMContentLoaded", e => {
     if(ls.getItem("name")) loadPet()
     else appearDiv("#select")
+    validatePayment()
     $searchPokemon.addEventListener("click", e => searchPokemon($pokemonName.value))
     $pokemonConfirmNo.addEventListener("click", e => {
         dissappearDiv(".confirm-pokemon")
