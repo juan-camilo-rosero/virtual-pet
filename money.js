@@ -32,7 +32,6 @@ export const buyProduct = async (btns, db, money) => {
                 ls.setItem(product, (productAmount + 1))
 
                 d.querySelector(".money-counter").textContent = newMoney
-                
             }
             else alert("No te alcanza el dinero")
         })

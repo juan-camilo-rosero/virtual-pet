@@ -142,7 +142,7 @@ export async function validatePayment() {
             newMoney = parseInt(ls.getItem("sessionProduct"))
 
             ls.setItem("money", newMoney + money)
-            d.querySelector(".money p").textContent = (newMoney + money)
+            d.querySelector(".money-counter").textContent = (newMoney + money)
 
             ls.removeItem("sessionId")
             ls.removeItem("sessionProduct")
